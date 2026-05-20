@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PharmaDash - نظام إدارة الصيدليات المتكامل</title>
+    <style>
+        :root {
+            --bg-main: #020b14;
+            --bg-card: #061524;
+            --bg-darker: #01060d;
+            --primary: #00a8ff;
+            --success: #00cc7a;
+            --danger: #ff4d4d;
+            --warning: #ffaa00;
+            --text-main: #ffffff;
+            --text-muted: #7f9aa5;
+            --border: #0c253f;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            margin: 0;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .phone-wrapper {
+            width: 100%;
+            max-width: 480px;
+            background-color: var(--bg-main);
+            min-height: 100vh;
+        }
+
+        /* الصفحة الأولى - الهوية */
+        .hero-section {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(180deg, #052440 0%, var(--bg-main) 100%);
+            border-radius: 0 0 30px 30px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo-img {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #00d2ff, #0066ff);
+            border-radius: 24px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            box-shadow: 0 10px 25px rgba(0, 168, 255, 0.3);
+        }
+
+        .company-title {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            margin: 5px 0;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin: 10px 0;
+            color: var(--text-main);
+            font-weight: 800;
+        }
+
+        .tagline {
+            color: var(--primary);
+            font-size: 1rem;
+            margin-bottom: 25px;
+        }
+
+        .client-box {
+            background-color: rgba(0, 168, 255, 0.08);
+            border: 1px dashed var(--primary);
+            padding: 15px;
+            border-radius: 12px;
+            margin-top: 20px;
+            text-align: right;
+        }
+
+        .client-box span {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            display: block;
+        }
+
+        .client-box strong {
+            color: var(--text-main);
+            font-size: 1.1rem;
+        }
+
+        /* القوائم والبطاقات */
+        h2 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin: 35px 0 15px;
+            padding-right: 10px;
+            border-right: 3px solid var(--primary);
+        }
+
+        .pharmacy-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .pharmacy-number {
+            background-color: rgba(0, 168, 255, 0.15);
+            color: var(--primary);
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .feature-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 18px;
+            margin-bottom: 15px;
+            border-radius: 16px;
+        }
+
+        .feature-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+        }
+
+        .feature-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* محاكاة شاشات الهاتف للإشعارات */
+        .phone-screen {
+            background-color: var(--bg-darker);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 15px;
+            margin-top: 15px;
+            font-family: monospace;
+        }
+
+        .screen-header {
+            border-bottom: 1px solid #11253c;
+            padding-bottom: 8px;
+            margin-bottom: 10px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .bot-title {
+            color: #00e676;
+            font-weight: bold;
+        }
+
+        .report-line {
+            display: flex;
+            justify-content: space-between;
+            padding: 4px 0;
+            font-size: 0.9rem;
+        }
+
+        .total-line {
+            border-top: 1px dashed var(--border);
+            margin-top: 10px;
+            padding-top: 8px;
+            font-weight: bold;
+            color: var(--success);
+        }
+
+        /* الجداول مخصصة للهاتف */
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background-color: var(--bg-card);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: right;
+            font-size: 0.85rem;
+        }
+
+        th, td {
+            padding: 12px 10px;
+            border-bottom: 1px solid var(--border);
+            white-space: nowrap;
+        }
+
+        th {
+            background-color: #091d33;
+            color: var(--primary);
+        }
+
+        .badge {
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .badge-danger { background-color: rgba(255, 77, 77, 0.15); color: var(--danger); }
+        .badge-success { background-color: rgba(0, 204, 122, 0.15); color: var(--success); }
+        .badge-warning { background-color: rgba(255, 170, 0, 0.15); color: var(--warning); }
+
+        /* شبكة الأدوية المحاكية للملف الأصلي */
+        .grid-meds {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .grid-box {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .grid-box .num {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: var(--success);
+            display: block;
+        }
+
+        .grid-box .label {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .pdf-btn {
+            display: block;
+            background: linear-gradient(90deg, #ff4d4d, #cc0000);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(255, 77, 77, 0.2);
+        }
+
+        footer {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            padding: 40px 0 20px;
+            border-top: 1px solid var(--border);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="phone-wrapper">
+        
+        <div class="hero-section">
+            <div class="logo-img">💊</div>
+            <div class="company-title">نبض للحلول البرمجية</div>
+            <h1>PharmaDash</h1>
+            <div class="tagline">نظام إدارة الصيدليات المتكامل سحابياً</div>
+            
+            <div class="client-box">
+                <span>مقدم خصيصاً للأستاذ:</span>
+                <strong>حسام كفاح المحترم</strong>
+            </div>
+        </div>
+
+        <a href="index.pdf" class="pdf-btn">📥 تحميل ملف بروفايل الـ PDF الأصلي</a>
+
+        <h2>شبكة صيدلياتكم الخمس المشمولة:</h2>
+        
+        <div class="pharmacy-card">
+            <div class="pharmacy-number">1</div>
+            <div><strong>صيدلية الخضر المركزية</strong></div>
+        </div>
+        <div class="pharmacy-card">
+            <div class="pharmacy-number">2</div>
+            <div><strong>صيدلية اللمسة الشافية</strong></div>
+        </div>
+        <div class="pharmacy-card">
+            <div class="pharmacy-number">3</div>
+            <div><strong>صيدلية النور</strong></div>
+        </div>
+        <div class="pharmacy-card">
+            <div class="pharmacy-number">4</div>
+            <div><strong>صيدلية العلا</strong></div>
+        </div>
+        <div class="pharmacy-card">
+            <div class="pharmacy-number">5</div>
+            <div><strong>صيدلية الأمل</strong></div>
+        </div>
+
+        <h2>المميزات البرمجية الحصرية:</h2>
+
+        <div class="feature-card">
+            <div class="feature-header">🎛️ لوحة تحكم مركزية سحابية</div>
+            <p class="feature-desc">تتيح لك متابعة مبيعات وجرد الفروع الخمسة من مكان واحد في نفس اللحظة مع رسم بياني ذكي.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-header">📈 تقارير وجرد كبسولة تلقائي</div>
+            <p class="feature-desc">كشوفات مالية يومية، أسبوعية، وشهرية دقيقة لحساب صافي الأرباح وهوامش التكلفة.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-header">🔒 منظومة أمان وصلاحيات دقيقة</div>
+            <p class="feature-desc">فصل كامل لحسابات وصلاحيات الكاشير، المحاسب، ومدير الصيدلية، مع كشف فوري لعمليات الحذف والتعديل بالدرج.</p>
+        </div>
+
+        <h2>منظومة الإشعارات الذكية المباشرة:</h2>
+        <p class="feature-desc" style="margin-bottom: 10px;">النظام يرسل تقارير الأرباح والمبيعات تلقائياً لهاتفك فور إغلاق الصيدليات:</p>
+        
+        <div class="phone-screen">
+            <div class="screen-header">
+                <span class="bot-title">🤖 PharmaDash Bot</span>
+                <span>9:00 م</span>
+            </div>
+            <div style="color: #00a8ff; font-weight: bold; margin-bottom: 8px;">📊 تقرير مبيعات اليوم الموحد:</div>
+            <div class="report-line"><span>• الخضر المركزية:</span> <span>4,320,000 د.ع</span></div>
+            <div class="report-line"><span>• اللمسة الشافية:</span> <span>3,850,000 د.ع</span></div>
+            <div class="report-line"><span>• صيدلية النور:</span> <span>2,640,000 د.ع</span></div>
+            <div class="report-line"><span>• صيدلية العلا:</span> <span>3,200,000 د.ع</span></div>
+            <div class="report-line"><span>• صيدلية الأمل:</span> <span>1,580,000 د.ع</span></div>
+            <div class="report-line total-line"><span>💰 إجمالي الكاش الكلي:</span> <span>15,590,000 د.ع</span></div>
+            <div class="report-line" style="color: #00cc7a; font-size: 0.85rem; margin-top: 5px;">📈 صافي الربح التقديري اليومي: 1,180,000 د.ع (هامش 35%)</div>
+        </div>
+
+        <div class="phone-screen" style="margin-top: 10px;">
+            <div class="screen-header">
+                <span style="color: #ff4d4d; font-weight: bold;">🚨 تنبيه نواقص المخزون الحرجة</span>
+                <span>تلقائي</span>
+            </div>
+            <div class="report-line" style="color: #ffaa00;">⚠️ المواد التالية وصلت لحد الأمان وبحاجة تجهيز فوري:</div>
+            <div class="report-line"><span>• اموكسيسيلين (شراب وأقراص)</span> <span>باقي 12 علبة</span></div>
+            <div class="report-line"><span>• اومبرازول (معدة 20 ملغ)</span> <span>باقي 8 علب</span></div>
+        </div>
+
+        <h2>حسابات المجهزين والمذاخر الفعالة:</h2>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>اسم الشركة / المذخر</th>
+                        <th>الرصيد المستحق</th>
+                        <th>آخر تعامل</th>
+                        <th>الحالة</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>شركة الرافدين للأدوية</td>
+                        <td>4,250,000 د.ع</td>
+                        <td>2026/03/15</td>
+                        <td><span class="badge badge-danger">قسط مستحق</span></td>
+                    </tr>
+                    <tr>
+                        <td>شركة دجلة الطبية</td>
+                        <td>1,820,000 د.ع</td>
+                        <td>2026/03/15</td>
+                        <td><span class="badge badge-success">مسدد بالكامل</span></td>
+                    </tr>
+                    <tr>
+                        <td>شركة بغداد الدوائية</td>
+                        <td>3,150,000 د.ع</td>
+                        <td>2026/03/10</td>
+                        <td><span class="badge badge-warning">متأخر</span></td>
+                    </tr>
+                    <tr>
+                        <td>مكتب النور للجملة</td>
+                        <td>950,000 د.ع</td>
+                        <td>2026/03/12</td>
+                        <td><span class="badge badge-danger">قسط مستحق</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>قاعدة بيانات الأدوية العراقية المدمجة:</h2>
+        <p class="feature-desc">يأتي النظام محملاً بـ +5000 صنف دواء جاهز بالباركودات والأسعار لتبدأ فوراً:</p>
+        
+        <div class="grid-meds">
+            <div class="grid-box"><span class="num">980</span><span class="label">مضادات حيوية</span></div>
+            <div class="grid-box"><span class="num">720</span><span class="label">مسكنات وخافضات</span></div>
+            <div class="grid-box"><span class="num">540</span><span class="label">فيتامينات ومكملات</span></div>
+            <div class="grid-box"><span class="num">680</span><span class="label">أمراض القلب والضغط</span></div>
+            <div class="grid-box"><span class="num">410</span><span class="label">أدوية السكري</span></div>
+            <div class="grid-box"><span class="num">600</span><span class="label">أدوية ومستلزمات أطفال</span></div>
+        </div>
+
+        <footer>
+            <p>نبض للحلول البرمجية المتقدمة © 2026</p>
+            <p style="font-size: 0.7rem; color: #435e7c;">جميع الحقوق محفوظة ومحمية برمجياً</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
