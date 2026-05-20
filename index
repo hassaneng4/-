@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PharmaDash - نظام إدارة الصيدليات المتكامل</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --primary: #0ea5e9;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #334155;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .btn-download {
+            display: inline-block;
+            background-color: var(--success);
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            margin: 20px 0;
+            transition: background 0.3s;
+        }
+
+        .btn-download:hover {
+            background-color: #059669;
+        }
+
+        h2 {
+            color: var(--primary);
+            border-right: 4px solid var(--primary);
+            padding-right: 10px;
+            margin-top: 40px;
+        }
+
+        .pharmacy-list, .features-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .pharmacy-list li {
+            background: var(--card-bg);
+            margin: 8px 0;
+            padding: 12px 15px;
+            border-radius: 6px;
+            border-right: 4px solid var(--success);
+        }
+
+        .features-list li {
+            background: var(--card-bg);
+            margin: 12px 0;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .features-list strong {
+            color: var(--primary);
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .report-box {
+            background: #111827;
+            border-right: 4px solid var(--warning);
+            padding: 15px;
+            border-radius: 6px;
+            font-family: monospace;
+            margin: 15px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            overflow-x: auto;
+            display: block;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid var(--border);
+            text-align: right;
+        }
+
+        th {
+            background-color: var(--card-bg);
+            color: var(--primary);
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        .badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        .badge-danger { background-color: rgba(239, 68, 68, 0.2); color: var(--danger); }
+        .badge-success { background-color: rgba(16, 185, 129, 0.2); color: var(--success); }
+        .badge-warning { background-color: rgba(245, 158, 11, 0.2); color: var(--warning); }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .grid-item {
+            background: var(--card-bg);
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .grid-item .count {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            display: block;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>💊 PharmaDash</h1>
+            <p class="subtitle">نظام إدارة الصيدليات المتكامل لشبكتكم البرمجية</p>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">إصدار ومواصفات عام 2026</p>
+            <a href="index.pdf" class="btn-download">📥 تحميل العرض التقديمي الأصلي كـ PDF</a>
+        </header>
+
+        <section>
+            <h2>👥 مقدم خصيصاً للأستاذ حسام كفاح</h2>
+            [span_0](start_span)<p>النظام مصمم ومعد بالكامل ليغطي شبكة صيدلياتكم الخمس الحالية ويربطها سحابياً[span_0](end_span):</p>
+            <ul class="pharmacy-list">
+                <li>1. [span_1](start_span)صيدلية الخضر المركزية[span_1](end_span)</li>
+                <li>2. [span_2](start_span)صيدلية اللمسة الشافية[span_2](end_span)</li>
+                <li>3. [span_3](start_span)صيدلية النور[span_3](end_span)</li>
+                <li>4. [span_4](start_span)صيدلية العلا[span_4](end_span)</li>
+                <li>5. [span_5](start_span)صيدلية الأمل[span_5](end_span)</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>🚀 المميزات الرئيسية للنظام</h2>
+            <ul class="features-list">
+                [span_6](start_span)<li><strong>🎛️ لوحة تحكم مركزية</strong> متابعة جميع الصيدليات الخمس من مكان واحد في الوقت الفعلي، مع إحصائيات لحظية وتنبيهات ذكية[span_6](end_span).</li>
+                [span_7](start_span)<li><strong>💰 تتبع المبيعات</strong> سجل كامل ومفصل لكل عملية بيع، مع تصنيف حسب الصيدلية والكاشير والوقت[span_7](end_span).</li>
+                [span_8](start_span)<li><strong>📊 تقارير شاملة واحترافية</strong> كشوفات يومية وأسبوعية وشهرية، مع جرد سنوي كامل وتقارير الأرباح والخسائر[span_8](end_span).</li>
+                [span_9](start_span)[span_10](start_span)<li><strong>🔔 منظومة إشعارات تلقائية</strong> ارسال المبيعات اليومية والنواقص إلى التليجرام والواتساب والإيميل تلقائياً فور الإغلاق[span_9](end_span)[span_10](end_span).</li>
+                [span_11](start_span)<li><strong>🏢 حسابات المجهزين والشركات</strong> إدارة شاملة لحسابات المجهزين والشركات الموردة وتتبع المدفوعات والأقساط المستحقة[span_11](end_span).</li>
+                [span_12](start_span)<li><strong>🔒 صلاحيات متعددة وآمنة</strong> حسابات منفصلة بصلاحيات مختلفة ومحمية للمالك، المحاسب، الكاشير، ومدير الصيدلية[span_12](end_span).</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>📱 منظومة الإشعارات الذكية عبر الهواتف</h2>
+            [span_13](start_span)<p>يصلك تقرير كبسولة تلقائي يومياً بعد إغلاق الصيدليات لتبقى على اطلاع تام بأدق التفاصيل[span_13](end_span):</p>
+            
+            <div class="report-box">
+                <strong>📊 تقرير مبيعات اليوم التلقائي:</strong><br>
+                [span_14](start_span)• الخضر المركزية: 4,320 د.ع[span_14](end_span)<br>
+                [span_15](start_span)• اللمسة الشافية: 3,850 د.ع[span_15](end_span)<br>
+                [span_16](start_span)• النور: 2,640 د.ع[span_16](end_span)<br>
+                [span_17](start_span)• العلا: 3,200 د.ع[span_17](end_span)<br>
+                [span_18](start_span)• الأمل: 1,580 د.ع[span_18](end_span)<br>
+                -------------------------<br>
+                [span_19](start_span)<strong>💰 الإجمالي: 12,450 د.ع</strong>[span_19](end_span)<br>
+                [span_20](start_span)<strong>📈 صافي أرباح اليوم: 1,180 د.ع (بمعدل هامش ربح 35%)</strong>[span_20](end_span)
+            </div>
+
+            <div class="report-box" style="border-right-color: var(--danger);">
+                <strong>🚨 تنبيه مخزون ذكي (النواقص الحالية):</strong><br>
+                [span_21](start_span)• اموكسيسيلين (بحاجة إلى 12 علبة فرعية)[span_21](end_span)<br>
+                [span_22](start_span)• اومبرازول (بحاجة إلى 8 علب فرعية)[span_22](end_span)<br>
+                [span_23](start_span)• لوراتادين (بحاجة إلى 15 علبة فرعية)[span_23](end_span)
+            </div>
+        </section>
+
+        <section>
+            <h2>📈 عينة من التقارير والكشوفات المالية</h2>
+            [span_24](start_span)<p>ملخص كشف الحساب لشهر آذار الإجمالي لجميع الفروع[span_24](end_span):</p>
+            <ul class="pharmacy-list" style="border-right: none;">
+                [span_25](start_span)<li>💵 <strong>إجمالي مبيعات الشهر:</strong> 385,400 د.ع[span_25](end_span)</li>
+                [span_26](start_span)<li>📈 <strong>صافي الربح الشهري:</strong> 135,290 د.ع (صعود بنسبة 18% عن الشهر السابق)[span_26](end_span)</li>
+                [span_27](start_span)<li>🧾 <strong>عدد الفواتير الكلية:</strong> 1,247 فاتورة صادرة[span_27](end_span)</li>
+                [span_28](start_span)<li>🏆 <strong>أفضل فرع تحقيقاً للمبيعات:</strong> صيدلية الخضر المركزية بمجموع 112,300 د.ع[span_28](end_span)</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>🏢 إدارة حسابات المجهزين والمذاخر</h2>
+            [span_29](start_span)<p>النظام يتتبع الفواتير والديون والأقساط لـ 24 مجهزاً نشطاً تلقائياً[span_29](end_span):</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>اسم المجهز / الشركة</th>
+                        <th>الرصيد المستحق</th>
+                        <th>آخر تعامل</th>
+                        <th>الحالة</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>شركة الرافدين للأدوية (مجهز رئيسي)</td>
+                        <td>4,250,000 د.ع</td>
+                        <td>2026/03/15</td>
+                        <td><span class="badge badge-danger">قسط مستحق</span></td>
+                    </tr>
+                    <tr>
+                        <td>شركة دجلة الطبية (مستلزمات)</td>
+                        <td>1,820,000 د.ع</td>
+                        <td>2026/03/15</td>
+                        <td><span class="badge badge-success">مسدد كامل</span></td>
+                    </tr>
+                    <tr>
+                        <td>شركة بغداد الدوائية (فيتامينات)</td>
+                        <td>3,150,000 د.ع</td>
+                        <td>2026/03/10</td>
+                        <td><span class="badge badge-warning">متأخر</span></td>
+                    </tr>
+                    <tr>
+                        <td>مكتب النور للأدوية (جملة محلية)</td>
+                        <td>950,000 د.ع</td>
+                        <td>2026/03/12</td>
+                        <td><span class="badge badge-danger">قسط مستحق</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>📦 مكتبة وقاعدة بيانات الأدوية الجاهزة</h2>
+            [span_30](start_span)[span_31](start_span)<p>يأتي النظام مزوداً بقاعدة بيانات محلية جاهزة تحتوي على <strong>أكثر من 5000 صنف دوائي</strong> في السوق العراقي لبدء البيع فوراً[span_30](end_span)[span_31](end_span):</p>
+            
+            <div class="grid">
+                <div class="grid-item"><span class="count">980</span> مضادات حيوية</div>
+                <div class="grid-item"><span class="count">720</span> مسكنات وخافضات</div>
+                <div class="grid-item"><span class="count">540</span> فيتامينات ومكملات</div>
+                <div class="grid-item"><span class="count">680</span> أمراض قلب وضغط</div>
+                <div class="grid-item"><span class="count">410</span> أدوية السكري</div>
+            </div>
+        </section>
+
+        <footer>
+            <p>نبض للحلول البرمجية المتقدمة © 2026 - جميع الحقوق محفوظة</p>
+        </footer>
+    </div>
+
+</body>
+</html>
